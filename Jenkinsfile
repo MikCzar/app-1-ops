@@ -22,5 +22,10 @@ pipeline {
                 echo 'Wdrażanie aplikacji...'
             }
         }
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/PeterPorzuczek/TimeRiddle.git', branch: 'master'
+            }
+        }
     }
 }
