@@ -6,10 +6,9 @@ pipeline {
             steps {
                 powershell '''
                     $ErrorActionPreference = 'Stop'
-                    $appid = 570
-                    $url = "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=$appid"
-                    $result = Invoke-RestMethod -Uri $url -UseBasicParsing -TimeoutSec 20
-                    Write-Host "AppID: $appid | Gracze online: $($result.response.player_count)"
+                    $appid = 730
+                    $dane = Invoke-RestMethod -Uri "https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=$appid" -UseBasicParsing -TimeoutSec 20
+                    Write-Output "Steam $appid | gracze teraz: $($dane.response.player_count)"
                 '''
             }
         }
